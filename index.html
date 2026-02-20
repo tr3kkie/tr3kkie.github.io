@@ -41,6 +41,8 @@
     </style>
 </head>
 <body>
+    <canvas id="fluid-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></canvas>
+
     <div class="container">
         <h1>Welcome to My Portfolio</h1>
         <p>I'm currently building something awesome. Stay tuned!</p>
@@ -48,5 +50,18 @@
             <a href="https://github.com">Follow my GitHub</a>
         </div>
     </div>
+
+<script src="https://cdn.jsdelivr.net"></script>
+<script>
+    // Initialize the simulation on your canvas
+    const canvas = document.getElementById('fluid-canvas');
+    fluid.init(canvas, {
+        // Optional settings
+        color: '#000000',
+        intensity: 0.8,
+        force: 0.2
+    });
+</script>
+
 </body>
 </html>
