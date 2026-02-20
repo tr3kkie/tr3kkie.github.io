@@ -1,19 +1,23 @@
-// 1. Find the canvas element from your HTML
 const canvas = document.getElementById('fluid-canvas');
-
-// 2. Initialize the fluid simulation
-// Note: If using the 'fluid-canvas' library, it uses the 'Fluid' constructor
 const myFluid = new Fluid(canvas);
 
-// 3. (Optional) Customize the look
-myFluid.mapBehaviors({
-    sim_resolution: 128,
-    dye_resolution: 512,
-    paused: false,
-    intensity: 0.8,
-    force: 0.2,
-    background_color: { r: 244, g: 244, b: 249 } // Matches your CSS body background
-});
-
-// 4. Start the simulation
 myFluid.activate();
+
+// --- CONTINUOUS EFFECT LOGIC ---
+let time = 0;
+
+function autoSimulate() {
+    // 1. Calculate a circular path for the "fake" touch
+    const x = window.innerWidth / 2 + Math.cos(time) * (window.innerWidth / 3);
+    const y = window.innerHeight / 2 + Math.sin(time) * (window.innerHeight / 3);
+
+    // 2. Inject force at these coordinates
+    // 'fluid' or 'myFluid' usually has a method to add splashes or velocity
+    // If using the standard fluid-canvas library:
+    myFluid.addSplash(x, y, 0.1, 0.1); 
+
+    time += 0.02; // Adjust this to change speed of the "stirring"
+    requestAnimationFrame(autoSimulate);
+}
+
+autoSimulate();
