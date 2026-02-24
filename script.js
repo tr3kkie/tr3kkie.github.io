@@ -10,20 +10,27 @@ myFluid.mapBehaviors({
 myFluid.activate();
 
 function triggerRandomSplash() {
-    // 1. Generate random coordinates
     const randomX = Math.random() * window.innerWidth;
     const randomY = Math.random() * window.innerHeight;
 
-    // 2. Add the splash (Random RGB colors)
-    myFluid.addSplash(randomX, randomY, Math.random(), Math.random(), Math.random(), 0.08, 0.04);
+    // 1. Randomize Intensity (0.01 to 0.1) and Radius (0.02 to 0.08)
+    const randomForce = Math.random() * (0.1 - 0.01) + 0.01;
+    const randomSize = Math.random() * (0.08 - 0.02) + 0.02;
 
-    // 3. Calculate a random delay between 2000ms (2s) and 4000ms (4s)
+    // 2. Apply the splash with random colors and the new random sizes
+    // Syntax: addSplash(x, y, r, g, b, force, radius)
+    myFluid.addSplash(
+        randomX, 
+        randomY, 
+        Math.random(), Math.random(), Math.random(), 
+        randomForce, 
+        randomSize
+    );
+
+    // 3. Keep the loop going (Random wait between 2-4 seconds)
     const randomDelay = Math.floor(Math.random() * (4000 - 2000 + 1)) + 2000;
-
-    // 4. Schedule the NEXT splash using the new random delay
     setTimeout(triggerRandomSplash, randomDelay);
 }
 
-// Start the first loop
+// Kick off the loop
 triggerRandomSplash();
-
