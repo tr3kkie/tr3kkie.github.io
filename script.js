@@ -29,7 +29,7 @@ function triggerRandomSplash() {
         randomSize
     );
 
-    const randomDelay = Math.floor(Math.random() * (4000 - 2000 + 1)) + 2000;
+    const randomDelay = Math.floor(Math.random() * (3000 - 1000 + 1)) + 100;
     setTimeout(triggerRandomSplash, randomDelay);
 }
 
