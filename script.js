@@ -6,7 +6,7 @@ const myFluid = new Fluid(canvas);
 myFluid.mapBehaviors({
     paused: false,
     intensity: 0.8,
-    background_color: { r: 244, g: 244, b: 249 }
+    background_color: { r: 50, g: 54, b: 52 }
 });
 
 // STEP 3: Activation
