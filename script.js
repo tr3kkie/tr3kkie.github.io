@@ -21,15 +21,8 @@ function triggerRandomSplash() {
     const randomSize = Math.random() * (0.08 - 0.02) + 0.02;
 
     // Use the activated myFluid here
-    myFluid.addSplash(
-        randomX, 
-        randomY, 
-        Math.random(), Math.random(), Math.random(), 
-        randomForce, 
-        randomSize
-    );
 
-    const randomDelay = Math.floor(Math.random() * (3000 - 1000 + 1)) + 100;
+    const randomDelay = Math.floor(Math.random() * (3000 - 1000 + 1)) + 300;
     setTimeout(triggerRandomSplash, randomDelay);
 }
 
